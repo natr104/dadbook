@@ -21,7 +21,7 @@ class UsersController < ApplicationController
 
         if @user.save
             flash[:notice] = "Account created! Welcome to Dadbook!"
-            redirect_to root_path
+            redirect_to @user
         else
             flash.now.alert = "Unable to create account - invalid email address or password"
             render :new
