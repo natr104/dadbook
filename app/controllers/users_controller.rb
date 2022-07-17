@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
-    
+   
+    skip_before_action :require_login, only: [:new, :create]
+
     def index
         @users = User.all
     end
@@ -19,7 +21,7 @@ class UsersController < ApplicationController
 
         if @user.save
             flash[:notice] = "Account created! Welcome to Dadbook!"
-            redirect_to users_path
+            redirect_to root_path
         else
             flash.now.alert = "Unable to create account - invalid email address or password"
             render :new
@@ -36,4 +38,6 @@ class UsersController < ApplicationController
     def user_params
         params.require(:user).permit(:email, :name, :password, :password_confirmation)
     end
+
+    
 end
