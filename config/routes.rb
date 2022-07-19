@@ -5,8 +5,12 @@ Rails.application.routes.draw do
   post "/login", to: "sessions#create"
   post "/logout", to: "sessions#destroy"
   
+  
+  resources :users do
+    resources :children, only: [:show, :index, :new]
+  end
   resources :children
-  resources :users
+
   
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

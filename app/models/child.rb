@@ -1,3 +1,3 @@
 class Child < ApplicationRecord
-    belongs_to :parent, :class_name => "User"
+    belongs_to :user
 end

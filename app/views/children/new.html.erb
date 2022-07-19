@@ -1,0 +1,20 @@
+<h2>Add Child</h2>
+<%= form_for @child do |f| %>
+    <%= f.hidden_field :user_id %>
+  <div>
+    <%= f.label :name %>
+    <%= f.text_field :name, autofocus: true %>
+  </div>
+  <div>
+    <%= f.label :dob %>
+    <%= f.date_field :dob %>
+  </div>
+
+  <div>
+    <%= f.label :sex %>
+    <%= f.text_field :sex %>
+  </div>
+  <div>
+    <%= f.submit "Submit" %>
+  </div>
+<% end %>
