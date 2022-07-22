@@ -35,12 +35,16 @@ class UsersController < ApplicationController
     end
 
     def destroy
-        # raise params.inspect
         @user = User.find(params[:id])
-        session.delete(@user.id)
+        # raise params.inspect
+        if @user == current_user
+            # raise params.inspect
+            session.delete(:user_id) 
+            # session[:user_id] = nil
+        end
         @user.delete
         flash[:notice] = "User deleted."
-        redirect_to users_path
+        redirect_to root_path
     end
 
     private
