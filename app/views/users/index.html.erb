@@ -2,7 +2,7 @@
     <h1>Users index</h1>
     <ul>
         <% @users.each do |u| %>
-            <li><%= link_to "#{u.name}", user_path(u) %></li>
+            <li><%= link_to "#{u.name}", user_path(u) %> <%= button_to "X", { action: "destroy", id: u.id }, method: "delete", data: { confirm: "Delete user?" } %></li>
         <% end %>
     </ul>
 </div>

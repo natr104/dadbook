@@ -21,6 +21,7 @@ class UsersController < ApplicationController
 
         if @user.save
             flash[:notice] = "Account created! Welcome to Dadbook!"
+            session[:user_id] = @user.id
             redirect_to @user
         else
             flash.now.alert = "Unable to create account - invalid email address or password"
@@ -31,6 +32,15 @@ class UsersController < ApplicationController
 
     def edit
         @user = User.find(params[:id])
+    end
+
+    def destroy
+        # raise params.inspect
+        @user = User.find(params[:id])
+        session.delete(@user.id)
+        @user.delete
+        flash[:notice] = "User deleted."
+        redirect_to users_path
     end
 
     private

@@ -4,10 +4,15 @@ class SessionsController < ApplicationController
     
     def create
         @user = User.find_by(email: params[:email])
-        return head(:forbidden) unless @user.authenticate(params[:password])
-        session[:user_id] = @user.id
-        flash[:notice] = "Logged in! Welcome #{@user.name}!"
-        redirect_to @user
+        if @user
+            return head(:forbidden) unless @user.authenticate(params[:password])
+            session[:user_id] = @user.id
+            flash[:notice] = "Logged in! Welcome #{@user.name}!"
+            redirect_to @user
+        else
+            flash.now.alert = "User with that email address does not exist."
+            render :new
+        end
     end
 
     def new
