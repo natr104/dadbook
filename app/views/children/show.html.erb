@@ -3,4 +3,5 @@
     <p><%= @child.dob %></p>
     <p>Sex: <%= @child.sex %></p>
     <p>Child of: <%= @child.user.name %>
+    <%= button_to "Edit", action: "edit" %>
 </div>

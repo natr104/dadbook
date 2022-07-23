@@ -23,6 +23,17 @@ class ChildrenController < ApplicationController
         end
     end
 
+    def edit
+        @child = Child.find(params[:id])
+    end
+
+    def update
+        @child = Child.find(params[:id])
+        @child.update(child_params)
+        flash[:notice] = "Successfully updated child information!"
+        redirect_to child_path
+    end
+
 
     private
 
