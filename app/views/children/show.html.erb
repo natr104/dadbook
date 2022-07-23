@@ -1,7 +1,8 @@
 <div>
     <h2><%= @child.name %></h2>
-    <p><%= @child.dob %></p>
+    <p>Date of birth: <%= @child.dob %></p>
     <p>Sex: <%= @child.sex %></p>
-    <p>Child of: <%= @child.user.name %>
-    <%= button_to "Edit", action: "edit" %>
+    <p>Parent: <%= link_to "#{@child.user.name}", @child.user %>
+    <br>
+    <%= link_to "Edit", action: "edit" %>
 </div>
