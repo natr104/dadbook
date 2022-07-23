@@ -36,11 +36,8 @@ class UsersController < ApplicationController
 
     def destroy
         @user = User.find(params[:id])
-        # raise params.inspect
         if @user == current_user
-            # raise params.inspect
             session.delete(:user_id) 
-            # session[:user_id] = nil
         end
         @user.delete
         flash[:notice] = "User deleted."
