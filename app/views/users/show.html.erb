@@ -5,8 +5,9 @@
     <%= link_to "Add child", new_user_child_path(@user) %>
     <h2>Children:</h2>
     <ul>
-    <% @user.children.each do |c| %>
-        <li><%= link_to "#{c.name}", user_child_path(@user, c) %></li>
-    <% end %>
+        <% @user.children.each do |c| %>
+            <li><%= link_to "#{c.name}", user_child_path(@user, c) %></li>
+        <% end %>
     </ul>
+    
 </div>

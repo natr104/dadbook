@@ -1,0 +1,5 @@
+<ul>
+    <% @children.each do |c| %>
+        <li><%= link_to "#{c.name}", child_path(c) %> - parent: <%= link_to "#{c.user.name}", user_path(c.user) %></li>
+    <% end %>
+</ul>
