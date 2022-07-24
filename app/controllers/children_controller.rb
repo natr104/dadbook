@@ -1,7 +1,11 @@
 class ChildrenController < ApplicationController
     
     def index
-        @children = Child.all
+        if params[:user_id]
+            @children = User.find(params[:user_id]).children
+        else
+            @children = Child.All
+        end
     end
     
     def show

@@ -6,7 +6,7 @@
     <h2>Children:</h2>
     <ul>
     <% @user.children.each do |c| %>
-        <li><%= link_to "#{c.name}", user_child_path(c) %></li>
+        <li><%= link_to "#{c.name}", user_child_path(@user, c) %></li>
     <% end %>
     </ul>
 </div>

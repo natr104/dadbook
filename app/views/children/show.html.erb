@@ -1,6 +1,7 @@
 <div>
     <h2><%= @child.name %></h2>
-    <p>Date of birth: <%= @child.dob %></p>
+    <p>Date of birth: <%= @child.dob.strftime("%b %d, %Y") %></p>
+    <p>Age: <%= age(@child) %>
     <p>Sex: <%= @child.sex %></p>
     <p>Parent: <%= link_to "#{@child.user.name}", @child.user %>
     <br>
