@@ -15,7 +15,7 @@ class UsersController < ApplicationController
     end
     
     def create
-        @user = User.create(user_params)
+        @user = User.create!(user_params)
 
         @user.email.downcase!
 
@@ -39,7 +39,7 @@ class UsersController < ApplicationController
         if @user == current_user
             session.delete(:user_id) 
         end
-        @user.delete
+        @user.destroy
         flash[:notice] = "User deleted."
         redirect_to root_path
     end
@@ -47,7 +47,7 @@ class UsersController < ApplicationController
     private
 
     def user_params
-        params.require(:user).permit(:email, :name, :password, :password_confirmation)
+        params.require(:user).permit(:email, :name, :password, :password_confirmation, :uid)
     end
 
     
