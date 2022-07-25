@@ -9,11 +9,25 @@ class ChildrenController < ApplicationController
     end
     
     def show
-        @child = Child.find(params[:id])
+        if params[:user_id]
+            user = User.find_by(id: params[:user_id])
+            if user.nil?
+                redirect_to users_path, alert: "User not found."
+            else
+                @child = user.children.find_by(id: params[:id])
+                redirect_to user_children_path(user), alert: "Child not found." if @child.nil?
+            end
+        else
+            @child = Child.find(params[:id])
+        end
     end
 
     def new
-        @child = Child.new(user_id: params[:user_id])
+        if params[:user_id] && !User.exists?(params[:user_id])
+            redirect_to users_path, alert: "User not found."
+        else
+            @child = Child.new(user_id: params[:user_id])
+        end
     end
 
     def create
@@ -28,14 +42,31 @@ class ChildrenController < ApplicationController
     end
 
     def edit
-        @child = Child.find(params[:id])
+        if params[:user_id]
+            user = User.find_by(id: params[:user_id])
+            if user.nil?
+                redirect_to users_path, alert: "User not found."
+            else
+                @child = user.children.find_by(id: params[:id])
+                redirect_to user_children_path(user), alert: "Child not found." if @child.nil?
+            end
+        else
+            @child = Child.find(params[:id])
+        end
     end
 
     def update
         @child = Child.find(params[:id])
         @child.update(child_params)
         flash[:notice] = "Successfully updated child information!"
-        redirect_to child_path
+        redirect_to @child
+    end
+
+    def destroy
+        @child = Child.find(params[:id])
+        @child.delete
+        flash[:notice] = "Child deleted."
+        redirect_to user_path(current_user)
     end
 
 
