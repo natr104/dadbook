@@ -1,0 +1,7 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  outing_date: 2022-07-26 15:17:30
+
+two:
+  outing_date: 2022-07-26 15:17:30

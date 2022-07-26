@@ -2,6 +2,7 @@ class User < ApplicationRecord
     has_secure_password
     before_destroy :destroy_children
     has_many :children
+    has_many :activities, through: :outings
 
     validates :name, length: { in: 2..40 }
     VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i

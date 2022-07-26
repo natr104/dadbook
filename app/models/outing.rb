@@ -1,0 +1,2 @@
+class Outing < ApplicationRecord
+end
