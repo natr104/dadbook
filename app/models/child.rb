@@ -4,5 +4,6 @@ class Child < ApplicationRecord
 
     validates :dob, presence: true
     validates :name, length: { in: 2..40 }
+    validates :sex, presence: true
 
 end
