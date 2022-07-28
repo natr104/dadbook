@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_07_26_051730) do
+ActiveRecord::Schema.define(version: 2022_07_28_124617) do
 
   create_table "activities", force: :cascade do |t|
     t.string "name"
@@ -45,6 +45,7 @@ ActiveRecord::Schema.define(version: 2022_07_26_051730) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "uid"
+    t.string "provider"
   end
 
   add_foreign_key "children", "users"
