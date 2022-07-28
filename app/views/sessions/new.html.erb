@@ -1,20 +1,24 @@
-<div class="form-signin m-auto text-center p-3" style="width: 330px">
-  <% if flash[:notice] %>
-    <%= content_tag :h1, flash[:notice] %>
-  <% else %>
-    <%= content_tag :h1, "Please log in", class: "h3 mb-3 fw-normal" %>
-  <% end %>
-  <%= form_with url: login_path do |f| %>
-    <div class="form-floating mb-3">
-      <%= f.text_field :email, class: "form-control", placeholder: "name@example.com", id: "floatingInput", type: "email" %>
-      <%= f.label :email, for:"floatingInput" %>
-    </div>
-    <div class="form-floating mb-3">
-      <%= f.password_field :password, class: "form-control", id: "floatingPassword", placeholder: "Password" %>
-      <%= f.label :password %>
-    </div>
-    <%= f.submit "Log in!", class: "mb-3 w-100 btn btn-lg btn-primary" %>
-    <br>
-    <%= link_to "Sign Up", new_user_path %>
-  <% end %>
-</div>
+<main>
+  <div class="card form-signin text-center m-auto p-3" style="max-width: 330px">
+    <% if flash[:notice] %>
+      <%= content_tag :h1, flash[:notice] %>
+    <% else %>
+      <%= content_tag :h1, "Please log in", class: "h3 mb-3 fw-normal" %>
+    <% end %>
+    <%= form_with url: login_path do |f| %>
+      <div class="form-floating mb-3">
+        <%= f.text_field :email, class: "form-control", placeholder: "name@example.com", id: "floatingInput", type: "email" %>
+        <%= f.label :email, for:"floatingInput" %>
+      </div>
+      <div class="form-floating mb-3">
+        <%= f.password_field :password, class: "form-control", id: "floatingPassword", placeholder: "Password" %>
+        <%= f.label :password %>
+      </div>
+      <%= f.submit "Log in!", class: "mb-3 w-100 btn btn-lg btn-primary" %>
+      <br>
+      <%= link_to "Sign Up", new_user_path %>
+      <br>
+      <%= link_to("Login with Github", '/auth/github', method: :post) %>
+    <% end %>
+  </div>
+</main>
