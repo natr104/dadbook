@@ -1,0 +1,7 @@
+<%= form_with model: @outing do |f| %>
+    <%= f.collection_select :activity_id, Activity.all, :id, :name %>
+    <br>
+    <%= f.datetime_local_field :date %>
+    <br>
+    <%= f.submit %>
+<% end %>
