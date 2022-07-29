@@ -4,7 +4,7 @@ class ChildrenController < ApplicationController
         if params[:user_id]
             @children = User.find(params[:user_id]).children
         else
-            @children = Child.All
+            @children = Child.all
         end
     end
     
@@ -18,7 +18,8 @@ class ChildrenController < ApplicationController
                 redirect_to user_children_path(user), alert: "Child not found." if @child.nil?
             end
         else
-            @child = Child.find(params[:id])
+            @child = Child.find_by(id: params[:id])
+            redirect_to children_path if @child.nil?
         end
     end
 
@@ -51,7 +52,8 @@ class ChildrenController < ApplicationController
                 redirect_to user_children_path(user), alert: "Child not found." if @child.nil?
             end
         else
-            @child = Child.find(params[:id])
+            @child = Child.find_by(id: params[:id])
+            redirect_to children_path if @child.nil?
         end
     end
 
