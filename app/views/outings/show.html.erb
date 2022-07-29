@@ -1,5 +1,7 @@
 <div>
-    <%= @outing.activity.name %>
+    <%= @outing.activities.each do |o| %>
+        <%= o.name %>
+    <% end %>
     <br>
     <%= @outing.outing_date %>
     <br>
