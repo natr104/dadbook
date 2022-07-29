@@ -1,0 +1,12 @@
+<h2><%= @activity.name %></h2>
+
+<p>Users who participate in this activity:</p>
+<ul>
+    <% @activity.users.each do |u| %>
+        <li><%= u.name %></li>
+    <% end %>
+</ul>
+<br>
+<%= link_to "Create an outing for this activity", new_user_outing_path(current_user, @activity) %>
+<br>
+<%= link_to "Return to activities list", action: "index" %>

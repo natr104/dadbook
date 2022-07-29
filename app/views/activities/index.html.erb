@@ -1,0 +1,7 @@
+<h2>Activities</h2>
+<ul>
+    <% @activities.each do |a| %>
+        <li><%= link_to a.name, a %></li>
+    <% end %>
+</ul>
+<%= link_to "Add activity", action: 'new' %>

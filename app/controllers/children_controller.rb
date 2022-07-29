@@ -35,7 +35,7 @@ class ChildrenController < ApplicationController
         @child = Child.create(child_params)
         if @child.save
             flash[:notice] = "Child added!"
-            redirect_to @child
+            redirect_to user_child_path(@child.user.id, @child)
         else
             flash.now.alert = "Unable to add child"
             render :new
@@ -61,7 +61,7 @@ class ChildrenController < ApplicationController
         @child = Child.find(params[:id])
         @child.update(child_params)
         flash[:notice] = "Successfully updated child information!"
-        redirect_to @child
+        redirect_to user_child_path(@child.user.id, @child)
     end
 
     def destroy

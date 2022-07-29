@@ -1,0 +1,7 @@
+<div>
+    <%= form_with model: @activity do |f| %>
+        <%= f.label :name %>
+        <%= f.text_field :name, autofocus: true %>
+        <%= f.submit %>
+    <% end %>
+</div>
