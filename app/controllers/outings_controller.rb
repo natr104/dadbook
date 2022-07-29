@@ -54,6 +54,6 @@ class OutingsController < ApplicationController
     private
 
     def outing_params
-        params.require(:outing).permit(:outing_date, :user_id, :activity_id, activities_attributes: [:name])
+        params.require(:outing).permit(:outing_date, :activity_id, :user_id)
     end
 end
