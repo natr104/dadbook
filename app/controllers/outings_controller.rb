@@ -15,6 +15,7 @@ class OutingsController < ApplicationController
 
     def show
         @outing = Outing.find_by(id: params[:id])
+        redirect_to outings_path, alert: "Outing not found" if @outing.nil?
     end
 
     def index
@@ -24,6 +25,6 @@ class OutingsController < ApplicationController
     private
 
     def outing_params
-        params.require(:outing).permit(:outing_date, :user_id, activity_ids:[],  child_ids:[])
+        params.require(:outing).permit(:outing_date, :activity_id, :user_id)
     end
 end

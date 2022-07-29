@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_07_29_025740) do
+ActiveRecord::Schema.define(version: 2022_07_29_120811) do
 
   create_table "activities", force: :cascade do |t|
     t.string "name"
@@ -30,11 +30,11 @@ ActiveRecord::Schema.define(version: 2022_07_29_025740) do
 
   create_table "outings", force: :cascade do |t|
     t.datetime "outing_date"
-    t.integer "user_id"
     t.integer "child_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "activity_id"
+    t.integer "user_id"
     t.index ["activity_id"], name: "index_outings_on_activity_id"
     t.index ["child_id"], name: "index_outings_on_child_id"
     t.index ["user_id"], name: "index_outings_on_user_id"
@@ -52,4 +52,5 @@ ActiveRecord::Schema.define(version: 2022_07_29_025740) do
 
   add_foreign_key "children", "users"
   add_foreign_key "outings", "activities"
+  add_foreign_key "outings", "users"
 end

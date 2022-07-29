@@ -1,0 +1,9 @@
+<%= @outing.activity.name %>
+<br>
+<%= @outing.outing_date %>
+<br>
+Created by: <%= @outing.user.name %>
+<br>
+Children attending: <% @outing.user.children.each do |c| %>
+<%= c.name %>
+<% end %>
