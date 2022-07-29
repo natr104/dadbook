@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   
   
   resources :users do
-    resources :children, only: [:show, :index, :new, :edit]
+    resources :children
     resources :outings
   end
   resources :children, except: [:new]

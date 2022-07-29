@@ -22,6 +22,35 @@ class OutingsController < ApplicationController
         @outings = Outing.all
     end
 
+    def update
+        @outing = Outing.find(params[:id])
+        @outing.update(outing_params)
+        flash[:notice] = "Successfully updated outing!"
+        redirect_to @outing
+    end
+
+    def edit
+        if params[:user_id]
+            user = User.find_by(id: params[:user_id])
+            if user.nil?
+                redirect_to users_path, alert: "User not found."
+            else
+                @outing = user.outing.find_by(id: params[:id])
+                redirect_to user_outings_path(user), alert: "Outing not found." if @outing.nil?
+            end
+        else
+            @outing = Outing.find_by(id: params[:id])
+            redirect_to outings_path if @outing.nil?
+        end
+    end
+
+    def destroy
+        @outing = Outing.find(params[:id])
+        @outing.destroy
+        flash[:notice] = "Outing deleted."
+        redirect_to outings_path
+    end
+
     private
 
     def outing_params

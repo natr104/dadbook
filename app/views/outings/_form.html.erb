@@ -1,0 +1,8 @@
+<%= form_with model: @outing do |f| %>
+    <%= f.hidden_field :user_id %>
+    <%= f.collection_select :activity_id, Activity.all, :id, :name %>
+    <br>
+    <%= f.datetime_local_field :outing_date %>
+    <br>
+    <%= f.submit %>
+<% end %>

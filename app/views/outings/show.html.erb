@@ -1,9 +1,15 @@
-<%= @outing.activity.name %>
-<br>
-<%= @outing.outing_date %>
-<br>
-Created by: <%= @outing.user.name %>
-<br>
-Children attending: <% @outing.user.children.each do |c| %>
-<%= c.name %>
-<% end %>
+<div>
+    <%= @outing.activity.name %>
+    <br>
+    <%= @outing.outing_date %>
+    <br>
+    Created by: <%= @outing.user.name %>
+    <br>
+    Children attending: <% @outing.user.children.each do |c| %>
+    <%= c.name %>
+    <% end %>
+    <br>
+    <%= link_to "Edit", action: 'edit' %>
+    <br>
+    <%= link_to "Delete", { action: "destroy", id: @outing.id }, method: "delete", data: { confirm: "Delete outing?" } %>
+</div>
