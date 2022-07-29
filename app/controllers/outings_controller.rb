@@ -35,7 +35,7 @@ class OutingsController < ApplicationController
             if user.nil?
                 redirect_to users_path, alert: "User not found."
             else
-                @outing = user.outing.find_by(id: params[:id])
+                @outing = user.outings.find_by(id: params[:id])
                 redirect_to user_outings_path(user), alert: "Outing not found." if @outing.nil?
             end
         else
@@ -48,7 +48,11 @@ class OutingsController < ApplicationController
         @outing = Outing.find(params[:id])
         @outing.destroy
         flash[:notice] = "Outing deleted."
-        redirect_to outings_path
+        if params[:user_id]
+            redirect_to @user
+        else
+            redirect_to outings_path
+        end
     end
 
     private

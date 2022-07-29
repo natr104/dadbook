@@ -2,17 +2,18 @@
     <h1><%= @user.name %>'s Home Page</h1>
     <h2><%= @user.email %></h2>
     
-    <%= link_to "Add child", new_user_child_path(@user) %>
     <h2>Children:</h2>
     <ul>
         <% @user.children.each do |c| %>
             <li><%= link_to "#{c.name}", user_child_path(@user, c) %></li>
         <% end %>
     </ul>
-    Outings:
+    <%= link_to "Add child", new_user_child_path(@user) %>
+    <h2>Outings:</h2>
     <ul>
         <% @user.outings.each do |o| %>
-            <li><%= link_to "#{o.activity.name} - #{o.outing_date}", user_outing_path(@user, o) %></li>
+            <li><%= link_to "#{o.activity.name} - #{outing_date_time(o)}", user_outing_path(@user, o) %></li>
         <% end %>
     </ul>
+    <%= link_to "Create Outing", controller: 'outings', action: 'new' %>
 </div>

@@ -1,7 +1,7 @@
 <div>
-    <%= @outing.activity.name %>
+    Activity: <%= @outing.activity.name %>
     <br>
-    <%= @outing.outing_date %>
+    When: <%= outing_date_time(@outing) %>
     <br>
     Created by: <%= @outing.user.name %>
     <br>
