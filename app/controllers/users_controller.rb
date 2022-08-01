@@ -7,7 +7,11 @@ class UsersController < ApplicationController
     end
 
     def show
-        @user = User.find(params[:id])
+        if !User.exists?(params[:id])
+            redirect_to users_path, alert: "User not found."
+        else
+            @user = User.find(params[:id])
+        end
     end
 
     def new
@@ -31,7 +35,11 @@ class UsersController < ApplicationController
     end
 
     def edit
-        @user = User.find(params[:id])
+        if !User.exists?(params[:id])
+            redirect_to users_path, alert: "User not found."
+        else
+            @user = User.find(params[:id])
+        end
     end
 
     def update
