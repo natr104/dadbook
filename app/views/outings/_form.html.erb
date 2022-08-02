@@ -1,9 +1,6 @@
-<%= form_for @outing do |f| %>
+<%= form_with model: @outing do |f| %>
     <%= f.hidden_field :user_id %>
-    <%= f.collection_select :activity_id, Activity.all, :id, :name, :include_blank => true %>
-    <%= f.fields_for :activities, @outing.activities.build do |activities_fields| %>
-        <%= activities_fields.text_field :name %>
-    <% end %>
+    <%= f.collection_select :activity_id, Activity.all, :id, :name %>
     <br>
     <%= f.datetime_local_field :outing_date %>
     <br>
