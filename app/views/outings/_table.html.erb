@@ -1,0 +1,25 @@
+<table>
+  <thead>
+    <tr>
+      <th>Activity</th>
+      <th>Date & Time</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% user_outings.each do |o| %>
+      <tr>
+        <td><%= o.activity.name %></td>
+        <td><%= outing_date_time(o) %></td>
+        <td><%= link_to "Show", o %></td>
+        <td><%= link_to "Edit", edit_outing_path(o) %></td>
+        <td><%= link_to "Delete", o, method: :delete, data: { confirm: "Delete outing?" } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to "Create outing", new_user_outing_path(current_user) %>
