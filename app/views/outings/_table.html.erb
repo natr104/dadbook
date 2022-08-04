@@ -10,7 +10,7 @@
   <tbody>
     <% user_outings.each do |o| %>
       <tr>
-        <td><%= o.activity.name %></td>
+        <td><%= o.outing_activities.activity.name %></td>
         <td><%= outing_date_time(o) %></td>
         <td><%= link_to "Show", o %></td>
         <td><%= link_to "Edit", edit_outing_path(o) %></td>

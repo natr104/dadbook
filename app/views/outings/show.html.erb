@@ -1,5 +1,5 @@
 <div>
-    Activity: <%= @outing.activity.name %>
+    Activity: <%= @outing.outing_activities.activity.name %>
     <br>
     When: <%= outing_date_time(@outing) %>
     <br>
@@ -12,4 +12,6 @@
     <%= link_to "Edit", action: 'edit' %>
     <br>
     <%= link_to "Delete", { action: "destroy", id: @outing.id }, method: "delete", data: { confirm: "Delete outing?" } %>
+    <br>
+    <%= link_to 'Home', '/' %>
 </div>

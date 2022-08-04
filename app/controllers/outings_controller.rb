@@ -5,12 +5,19 @@ class OutingsController < ApplicationController
             render :new, alert: "User not found."
         else
             @outing = Outing.new(user_id: current_user.id)
+            @outing.build_outing_activities
         end
     end
 
     def create
-        @outing = Outing.create!(outing_params)
-        redirect_to @outing
+        @outing = Outing.new(outing_params)
+        if @outing.save
+            flash[:notice] = "Outing created"
+            redirect_to @outing
+        else
+            flash.now.alert = "Failed to create outing."
+            render :new
+        end   
     end
 
     def show
@@ -51,13 +58,13 @@ class OutingsController < ApplicationController
         if params[:user_id]
             redirect_to @user
         else
-            redirect_to outings_path
+            redirect_back(fallback_location: outings_path)
         end
     end
 
     private
 
     def outing_params
-        params.require(:outing).permit(:outing_date, :activity_id, :user_id)
+        params.require(:outing).permit(:outing_date, :activity_id, :user_id, outing_activities_attributes: [:name])
     end
 end

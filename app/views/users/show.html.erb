@@ -12,7 +12,7 @@
     <h2>Outings:</h2>
     <ul>
         <% @user.outings.each do |o| %>
-            <li><%= link_to "#{o.activity.name} - #{outing_date_time(o)}", user_outing_path(@user, o) %></li>
+            <li><%= link_to "#{o.outing_activities.activity.name} - #{outing_date_time(o)}", user_outing_path(@user, o) %></li>
         <% end %>
     </ul>
     <%= link_to "Create Outing", controller: 'outings', action: 'new' %>

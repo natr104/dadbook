@@ -1,6 +1,6 @@
 <div>
     <h2>Welcome to Dadbook!</h2>
     <% if current_user %>
-        <%= render partial: 'outings/table', locals: {user_outings: @outings} %>
+        <%= render partial: 'outings/table', locals: {user_outings: current_user.outings} %>
     <% end %>
 </div>

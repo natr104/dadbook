@@ -10,12 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_07_29_132131) do
+ActiveRecord::Schema.define(version: 2022_08_04_074644) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "activities", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "outing_id"
+    t.index ["outing_id"], name: "index_activities_on_outing_id"
   end
 
   create_table "children", force: :cascade do |t|
@@ -42,9 +47,7 @@ ActiveRecord::Schema.define(version: 2022_07_29_132131) do
     t.integer "child_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "activity_id"
     t.integer "user_id"
-    t.index ["activity_id"], name: "index_outings_on_activity_id"
     t.index ["child_id"], name: "index_outings_on_child_id"
     t.index ["user_id"], name: "index_outings_on_user_id"
   end
@@ -59,9 +62,9 @@ ActiveRecord::Schema.define(version: 2022_07_29_132131) do
     t.string "provider"
   end
 
+  add_foreign_key "activities", "outings"
   add_foreign_key "children", "users"
   add_foreign_key "outing_activities", "activities"
   add_foreign_key "outing_activities", "outings"
-  add_foreign_key "outings", "activities"
   add_foreign_key "outings", "users"
 end
