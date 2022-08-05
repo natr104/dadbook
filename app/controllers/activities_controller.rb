@@ -21,6 +21,7 @@ class ActivitiesController < ApplicationController
 
     def new
         @activity = Activity.new
+        
     end
 
     def create
@@ -55,7 +56,7 @@ class ActivitiesController < ApplicationController
     private
 
     def activity_params
-        params.require(:activity).permit(:name)
+        params.require(:activity).permit(:name, outing_ids:[])
     end
 
 end

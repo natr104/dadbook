@@ -11,22 +11,24 @@
   </head>
 
   <body>
-    <div class="container">
-      <h1><%= link_to "Dadbook", root_path %></h1>
+    <header>
+      <%= link_to "Dadbook", root_path %>
       <% if current_user %>
         <%= link_to "#{current_user.welcome}", user_path(current_user.id) %>
         <%= link_to "Logout", logout_path, method:"post" %>
       <% else %>
         <%= link_to "Login", login_path %> <%= link_to "Sign up", new_user_path %>
       <% end %>
+    </header>
       <br>
-      <% if notice %>
-        <%= notice %>
-      <% end %>
+      <div class="container">
+        <% if notice %>
+          <%= notice %>
+        <% end %>
 
-      <% if alert %>
-        <%= alert %>
-      <% end %>
+        <% if alert %>
+          <%= alert %>
+        <% end %>
 
       <%= yield %>
     </div>

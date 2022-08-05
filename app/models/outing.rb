@@ -10,8 +10,7 @@ class Outing < ApplicationRecord
         if act[:name] != ""
             activity = Activity.find_or_create_by!(name: act[:name])
             self.activity = activity
-        # else
-        #     self.activity = Activity.find(self.activity_id)
+            raise self.inspect
         end
     end
 

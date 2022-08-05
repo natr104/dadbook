@@ -1,13 +1,5 @@
 <div>
-    <h2><%= @child.name %></h2>
-    <p>Date of birth: <%= @child.dob.strftime("%b %d, %Y") %></p>
-    <p>Age: <%= age(@child) %>
-    <p>Sex: <%= @child.sex %></p>
+    <%= render partial: 'about', locals: {child: @child} %>
+    <%= link_to "Edit", action: "edit" %> <%= link_to "Delete", { action: "destroy", id: @child.id }, method: "delete", data: { confirm: "Delete child?" } %>
     <p>Parent: <%= link_to "#{@child.user.name}", @child.user %>
-    <br>
-    <%= link_to "Edit", action: "edit" %>
-    <br>
-    <%= link_to "Delete", { action: "destroy", id: @child.id }, method: "delete", data: { confirm: "Delete child?" } %>
-    
-
 </div>

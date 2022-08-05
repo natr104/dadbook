@@ -1,6 +1,13 @@
 <div>
     <h2>Welcome to Dadbook!</h2>
     <% if current_user %>
+        <h3>Your Outings</h3>
         <%= render partial: 'outings/table', locals: {user_outings: current_user.outings} %>
+        <h3>Your Children</h3>
+        <% current_user.children.each do |child| %>
+            <%= render partial: 'children/about', locals: {child: child} %>
+        <% end %>
+        <%= link_to "Add child", new_user_child_path(current_user) %>
     <% end %>
+    
 </div>
