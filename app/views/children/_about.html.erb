@@ -1,6 +1,12 @@
-<strong><%= child.name %></strong>
-<ul>
-<li>Date of birth: <%= child.dob.strftime("%b %d, %Y") %></li>
-<li>Age: <%= age(child) %></li>
-<li>Sex: <%= child.sex %></li>
-</ul>
+<div class="col-sm-3">
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title"><%= child.name %></h5>
+        <ul>
+            <li>Date of birth: <%= child.dob.strftime("%b %d, %Y") %></li>
+            <li>Age: <%= age(child) %></li>
+            <li>Sex: <%= child.sex %></li>
+        </ul>
+    </div>
+</div>
+</div>
