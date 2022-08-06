@@ -1,7 +1,7 @@
 <h2>Outings</h2>
 <ul>
 <% @outings.each do |o| %>
-    <li><%= link_to "#{o.activity.name} #{o.outing_date} #{o.user.name}", o %></li>
+    <li><%= link_to "#{o.outing_activities.activity.name} #{o.outing_date} #{o.user.name}", o %></li>
 <% end %>
 </ul>
 <%= link_to "Create Outing", action: 'new' %>

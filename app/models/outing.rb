@@ -28,4 +28,9 @@ class Outing < ApplicationRecord
         self.outing_activities.destroy
     end
 
+    def self.by_activity(activity_id)
+        # activity = self.outing_activities.activity
+        where(activity: activity_id)
+    end
+
 end

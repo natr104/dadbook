@@ -26,7 +26,13 @@ class OutingsController < ApplicationController
     end
 
     def index
-        @outings = Outing.all
+        @activities = Activity.all
+        if !params[:activity].blank?
+            @outings = Outing.by_activity(params[:activity])
+            raise @outings.inspect
+        else
+            @outings = Outing.all
+        end
     end
 
     def update
