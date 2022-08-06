@@ -1,8 +1,8 @@
 class Outing < ApplicationRecord
-    before_destroy :destroy_outing_activities
+    before_destroy :destroy_outing_activity
     belongs_to :user
-    has_one :outing_activities
-    has_one :activity, through: :outing_activities
+    has_one :outing_activity, dependent: :destroy
+    has_one :activity, through: :outing_activity, dependent: :destroy
     
     validates :outing_date, presence: :true
 
@@ -10,26 +10,22 @@ class Outing < ApplicationRecord
         if act[:name] != ""
             activity = Activity.find_or_create_by!(name: act[:name])
             self.activity = activity
-            raise self.inspect
         end
     end
 
     def activity_id=(id)
         activity = Activity.find(id)
-        self.build_outing_activities.save
-        self.outing_activities.activity=activity
+        self.build_outing_activity.save
+        self.outing_activity.activity=activity
         self.save
-        puts "==============================================="
-        p self.outing_activities
     end
         
 
-    def destroy_outing_activities
-        self.outing_activities.destroy
+    def destroy_outing_activity
+        self.outing_activity.destroy
     end
 
     def self.by_activity(activity_id)
-        # activity = self.outing_activities.activity
         where(activity: activity_id)
     end
 

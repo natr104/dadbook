@@ -6,7 +6,6 @@
         <li><%= u.name %></li>
     <% end %>
 </ul>
-<br>
-<%= link_to "Create an outing for this activity", new_user_outing_path(current_user, @activity) %>
+<%= link_to "Delete", { action: 'destroy', id: @activity.id }, method: "delete", data: { confirm: "Delete activity?" } %>
 <br>
 <%= link_to "Return to activities list", action: "index" %>

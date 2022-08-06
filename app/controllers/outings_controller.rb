@@ -5,7 +5,7 @@ class OutingsController < ApplicationController
             render :new, alert: "User not found."
         else
             @outing = Outing.new(user_id: current_user.id)
-            @outing.build_outing_activities
+            @outing.build_outing_activity
         end
     end
 
