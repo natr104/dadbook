@@ -29,7 +29,7 @@ class OutingsController < ApplicationController
         @activities = Activity.all
         if !params[:activity].blank?
             @outings = Outing.by_activity(params[:activity])
-            raise @outings.inspect
+            # raise @outings.inspect
         else
             @outings = Outing.all
         end

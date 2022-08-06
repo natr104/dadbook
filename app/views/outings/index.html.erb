@@ -1,2 +1,6 @@
 <h2>Outings</h2>
+<%= form_with url: outings_path, method: :get do |form| %>
+  <%= form.collection_select :activity, Activity.all, :id, :name, include_blank: true %>
+  <%= form.submit "Filter" %>
+<% end %>
 <%= render partial: 'table', locals: {user_outings: @outings} %>

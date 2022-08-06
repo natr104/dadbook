@@ -26,7 +26,7 @@ class Outing < ApplicationRecord
     end
 
     def self.by_activity(activity_id)
-        where(activity: activity_id)
+        self.joins(:activity).where(activities: activity_id)
     end
 
 end
