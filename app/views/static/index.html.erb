@@ -12,6 +12,37 @@
             
         </div>
         <%= link_to "Add child", new_user_child_path(current_user) %>
+    <% else %>
+        <div class="row align-items-center g-lg-5 py-5">
+            <div class="col-lg-7 text-center text-lg-start">
+                    <h1 class="display-4 fw-bold lh-1 mb-3">Vertically centered hero sign-up form</h1>
+                    <p class="col-lg-10 fs-4">Below is an example form built entirely with Bootstrap’s form controls. Each required form group has a validation state that can be triggered by attempting to submit the form without completing it.</p>
+                </div>
+                <div class="col-md-10 mx-auto col-lg-5">
+                    <div class="p-4 p-md-5 border rounded-3 bg-light">
+                    <%= form_with url: new_user_path do |f| %>
+                    <div class="form-floating mb-3">
+                        <%= f.text_field :email, class: "form-control", id: "floatingInput", placeholder: "name@example.com" %>
+                        <%= f.label :email, for: "floatingInput" %>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <%= f.text_field :name, class: "form-control", id: "floatingNameInput", placeholder: "Your Name" %>
+                        <%= f.label :name, for: "floatingNameInput" %>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <%= f.password_field :password, class: "form-control", id: "floatingPassword", placeholder: "Password" %>
+                        <%= f.label :password, for: "floatingPassword" %>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <%= f.password_field :password_confirmation, class: "form-control", id: "floatingPasswordConfirmation", placeholder: "Confirm Password" %>
+                        <%= f.label :password_confirmation, for: "floatingPasswordConfirmation" %>
+                    </div>
+                    <%= f.submit "Sign up", class: "w-100 btn btn-lg btn-primary" %>
+                    <hr class="my-4">
+                    <% end %>
+                    </div>
+                </div>
+            </div>
     <% end %>
     
 </div>
