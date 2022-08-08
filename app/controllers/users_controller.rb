@@ -19,7 +19,7 @@ class UsersController < ApplicationController
     end
     
     def create
-        @user = User.create!(user_params)
+        @user = User.create(user_params)
 
         @user.email.downcase!
 
@@ -28,8 +28,8 @@ class UsersController < ApplicationController
             session[:user_id] = @user.id
             redirect_to @user
         else
-            flash.now.alert = "Unable to create account - invalid email address or password"
-            render :new
+            redirect_back(fallback_location: root_path)
+            flash[:notice] = "Unable to create account - invalid email address or password"
         end
 
     end
