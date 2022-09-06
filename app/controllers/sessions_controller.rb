@@ -20,7 +20,7 @@ class SessionsController < ApplicationController
             u.name = auth['info']['name']
             u.email = auth['info']['email']
             u.provider = auth['provider'].capitalize
-            u.password = u.password_confirmation = SecureRandom.base58(24)
+            u.password = SecureRandom.base58(24)
         end
         if @user
             session[:user_id] = @user.id
