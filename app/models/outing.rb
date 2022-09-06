@@ -3,6 +3,7 @@ class Outing < ApplicationRecord
     belongs_to :user
     has_one :outing_activity, dependent: :destroy
     has_one :activity, through: :outing_activity, dependent: :destroy
+    scope :by_activity, -> (activity_id) {joins(:activity).where(activities: activity_id)}
     
     validates :outing_date, presence: :true
 
@@ -25,8 +26,8 @@ class Outing < ApplicationRecord
         self.outing_activity.destroy
     end
 
-    def self.by_activity(activity_id)
-        self.joins(:activity).where(activities: activity_id)
-    end
+    # def self.by_activity(activity_id)
+    #     self.joins(:activity).where(activities: activity_id)
+    # end
 
 end
