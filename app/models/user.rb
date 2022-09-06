@@ -1,6 +1,6 @@
 class User < ApplicationRecord
     has_secure_password
-    before_destroy :destroy_children
+    before_destroy :destroy_children, :destroy_outings
     has_many :children
     has_many :outings
     has_many :activities, through: :outings
@@ -19,6 +19,10 @@ class User < ApplicationRecord
 
     def destroy_children
         self.children.destroy_all
+    end
+
+    def destroy_outings
+        self.outings.destroy_all
     end
 
 end
